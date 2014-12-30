@@ -1,0 +1,4 @@
+DEFRAM 10
+LDA 1
+LDA 2
+ADD 0
