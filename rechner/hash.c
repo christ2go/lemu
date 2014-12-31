@@ -44,12 +44,23 @@ int count_nodes(command *rootnode)
     nextnode = nextnode->next;
     i++;
   }
-  return i;
+  return i+1;
   
 }
-command* getnode(command *rootnode)
+command* getnode(command *rootnode,int nr)
 {
-  
-  
+  int i = 0;
+  command* nextnode = rootnode;
+  while(nextnode->next != NULL)
+  {
+    if(i == nr)
+      return nextnode;
+    nextnode = nextnode->next;
+
+    i++;
+  }
+  if(i == nr)
+      return nextnode;
+  return NULL;
   
 }

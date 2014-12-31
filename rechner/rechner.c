@@ -35,6 +35,7 @@ int main(int argc, char* argv[])
     free(first);
   }
   print_hash(firstcommand);
+  eval(firstcommand);
   // Everything is ready for execution
   unload_hash(firstcommand);
   

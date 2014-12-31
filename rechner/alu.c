@@ -4,11 +4,27 @@
  * Emulation of a 64-Bit Arithmetic Logical Unit 
  */
 #include <stdio.h>
-#define pc_size 4
-void printres(int array[pc_size]);
+#include "rechner.h"
 int carry = 0; // Carryflag
 int accu[pc_size];
 
+void converttobinary(int result[pc_size],int dec)
+{
+      int d[pc_size];
+      setnull(d);
+      int i = 0;
+      while(dec>0) 
+      { 
+           d[i]=dec%2; 
+           i++; 
+           dec=dec/2;
+      }
+
+      for(i = pc_size;i>=0;i--)
+      {
+        result[pc_size-1-i] = d[i];
+      }
+}
 int add(int a[pc_size],int b[pc_size])
 {
   int result[pc_size];
@@ -64,13 +80,4 @@ void printres(int array[pc_size])
 void subtract(int a[pc_size],int b[pc_size])
 {
   
-}
-
-int main(void)
-{
-  int a[4] = {0,0,1,0};
-  int b[4] = {0,0,0,1};
-  subtract(a,b);
-  printres(a);
-
 }
