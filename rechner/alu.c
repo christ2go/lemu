@@ -107,7 +107,7 @@ void subtract(int a[pc_size],int b[pc_size])
   setnull(one);
   one[pc_size-1] = 1; 
   add(temp,one);
-  add(a,b);
+  add(a,temp);
 
 }
 void printres(int array[pc_size])
