@@ -8,6 +8,32 @@
 int carry = 0; // Carryflag
 int accu[pc_size];
 
+int int_pow(int base,int exponent)
+{
+  if(exponent == 0)
+    return 1;
+  if(exponent == 1)
+    return base;
+  int result = base;
+  for(int i = 1;i<exponent;i++)
+  {
+    result *= base;
+  }
+  return result;
+}
+int dectobin(int bin[pc_size])
+{
+  int erg = 0;
+
+  for(int i = pc_size-1;i>=0;i--)
+  {
+    if(bin[i] == 1)
+    {
+      erg += int_pow(2,pc_size-1-i);
+    }
+  }
+  return erg;
+}
 void converttobinary(int result[pc_size],int dec)
 {
       int d[pc_size];
@@ -70,6 +96,20 @@ void negate(int array[pc_size])
   }
 }
 
+void subtract(int a[pc_size],int b[pc_size])
+{
+  // Negate b
+  int temp[pc_size];
+  setnull(temp);
+  arrcpy(temp,b);
+  negate(temp);
+  int one[pc_size];
+  setnull(one);
+  one[pc_size-1] = 1; 
+  add(temp,one);
+  add(a,b);
+
+}
 void printres(int array[pc_size])
 {
   for(int i = 0;i<pc_size;i++)
@@ -77,7 +117,3 @@ void printres(int array[pc_size])
   printf("\n");
 }
 
-void subtract(int a[pc_size],int b[pc_size])
-{
-  
-}

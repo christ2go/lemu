@@ -1,6 +1,7 @@
 #ifndef _INCL_GUARD
 #define _INCL_GUARD
-#define pc_size 8
+#define pc_size 64
+
 // rechner.h
 struct command
 {
@@ -25,5 +26,7 @@ void subtract(int a[pc_size],int b[pc_size]);
 void setnull(int a[pc_size]);
 void printres(int array[pc_size]);
 void converttobinary(int result[pc_size],int decimalno);
-
+int intpow(int base,int exponent);
+int dectobin(int bin[pc_size]);
+void arrcpy(int dest[pc_size],int src[pc_size]);
 #endif

@@ -10,6 +10,13 @@ void setnull(int a[pc_size])
 	for(int i = 0;i<pc_size;i++)
 		a[i] = 0;
 }
+void arrcpy(int dest[pc_size],int src[pc_size])
+{
+	for(int i = 0;i<pc_size;i++)
+	{
+		dest[i] = src[i];
+	}
+}
 void eval(command* rootnode)
 {
 	int* ram = NULL;
@@ -62,6 +69,20 @@ void eval(command* rootnode)
 			add(acc,cell);
 		} 
 
+		if(strcmp(node->command,"NEG") == 0)
+			negate(acc);
+		if(strcmp(node->command,"DEC") == 0)
+		{
+			printf("%i \n",dectobin(acc));
+		}
+		if(strcmp(node->command,"SUB") == 0)
+		{
+			int cell[pc_size];
+			setnull(cell);
+			for(int i=0;i<pc_size;i++)
+				cell[i] = ram[pc_size*node->arg+i];
+			subtract(acc,cell);
+		}
 
 	}
 	if(ram != NULL)
