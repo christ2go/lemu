@@ -5,6 +5,7 @@
  */
 #include <stdio.h>
 #include "rechner.h"
+#include <stdbool.h>
 int carry = 0; // Carryflag
 int accu[pc_size];
 
@@ -21,10 +22,23 @@ int int_pow(int base,int exponent)
   }
   return result;
 }
-int dectobin(int bin[pc_size])
+int dectobin(int bin_a[pc_size])
 {
+  int bin[pc_size];
+  setnull(bin);
+  arrcpy(bin,bin_a);
   int erg = 0;
 
+  // Check for most significant bit
+  bool isneg = false;
+  if(bin[0] == 1)
+    isneg = true;
+  else
+    isneg = false;
+  if(isneg)
+  {
+    negate(bin);
+  }
   for(int i = pc_size-1;i>=0;i--)
   {
     if(bin[i] == 1)
@@ -32,6 +46,8 @@ int dectobin(int bin[pc_size])
       erg += int_pow(2,pc_size-1-i);
     }
   }
+  if(isneg)
+    erg = -erg-1;
   return erg;
 }
 void converttobinary(int result[pc_size],int dec)

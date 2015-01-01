@@ -1,6 +1,6 @@
 #ifndef _INCL_GUARD
 #define _INCL_GUARD
-#define pc_size 64
+#define pc_size 16
 
 // rechner.h
 struct command
@@ -29,4 +29,5 @@ void converttobinary(int result[pc_size],int decimalno);
 int intpow(int base,int exponent);
 int dectobin(int bin[pc_size]);
 void arrcpy(int dest[pc_size],int src[pc_size]);
+
 #endif
